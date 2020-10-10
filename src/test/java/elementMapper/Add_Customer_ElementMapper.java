@@ -35,12 +35,19 @@ public class Add_Customer_ElementMapper {
     @FindBy(id = "field-country")
     public WebElement country;
 
-    @FindBy(css = "#field_salesRepEmployeeNumber_chosen > a > span")
-    public WebElement employeer;
+    @FindBy(css = "#field_salesRepEmployeeNumber_chosen > a > div > b")
+    public WebElement clickEmployeer;
+
+    @FindBy(css = "#field_salesRepEmployeeNumber_chosen > div > div > input[type=text]")
+    public WebElement nameEmployeer;
+
 
     @FindBy(id = "field-creditLimit")
     public WebElement creditLimit;
 
     @FindBy(id = "form-button-save")
     public WebElement btnSave;
+
+    @FindBy(css= "#report-success > p")
+    public WebElement sucessMessage;
 }

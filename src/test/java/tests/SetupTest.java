@@ -2,11 +2,14 @@ package tests;
 
 import elementMapper.Bootstrap_Theme_V4_ElementMapper;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import pageObjects.Add_Customer_Page;
 import pageObjects.Bootstrap_Theme_V3_Page;
 import pageObjects.Bootstrap_Theme_V4_Page;
 import utils.Browser;
 import utils.Utils;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SetupTest extends BaseTests {
@@ -36,7 +39,26 @@ public class SetupTest extends BaseTests {
 
     @Test
     public void testAddCustomer(){
+        Add_Customer_Page add_customer_page = new Add_Customer_Page();
 
+        testClickAddCustomerBtn();
+
+        add_customer_page.fillName();
+        add_customer_page.fillLastName();
+        add_customer_page.fillContactFirstName();
+        add_customer_page.fillPhone();
+        add_customer_page.fillAddressLine1();
+        add_customer_page.fillAddressLine2();
+        add_customer_page.fillCity();
+        add_customer_page.fillState();
+        add_customer_page.fillPostalCode();
+        add_customer_page.fillCountry();
+        add_customer_page.fillEmployer();
+        add_customer_page.fillCreditLimit();
+        add_customer_page.clickSaveBtn();
+
+        assertTrue(Browser.getCurrentDriver().getCurrentUrl().contains(Utils.getBaseUrl().concat("_v4/add")));
+        assertTrue(add_customer_page.getSucessMessage().equals("Your data has been successfully stored into the database. Edit Customer or Go back to list"));
     }
 
 }
