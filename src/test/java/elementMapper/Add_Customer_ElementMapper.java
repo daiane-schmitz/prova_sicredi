@@ -50,4 +50,7 @@ public class Add_Customer_ElementMapper {
 
     @FindBy(css= "#report-success > p")
     public WebElement sucessMessage;
+
+    @FindBy(id = "save-and-go-back-button")
+    public WebElement btnSaveAndGoBack;
 }

@@ -1,15 +1,16 @@
 package tests;
 
-import elementMapper.Bootstrap_Theme_V4_ElementMapper;
 import org.junit.Test;
-import org.openqa.selenium.By;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import pageObjects.Add_Customer_Page;
 import pageObjects.Bootstrap_Theme_V3_Page;
 import pageObjects.Bootstrap_Theme_V4_Page;
 import utils.Browser;
 import utils.Utils;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SetupTest extends BaseTests {
@@ -59,6 +60,31 @@ public class SetupTest extends BaseTests {
 
         assertTrue(Browser.getCurrentDriver().getCurrentUrl().contains(Utils.getBaseUrl().concat("_v4/add")));
         assertTrue(add_customer_page.getSucessMessage().equals("Your data has been successfully stored into the database. Edit Customer or Go back to list"));
+    }
+
+    @Test
+        public void testAddCostumerAndDoSearch() throws InterruptedException {
+        Add_Customer_Page add_customer_page = new Add_Customer_Page();
+        Bootstrap_Theme_V4_Page bootstrap_theme_v4_page = new Bootstrap_Theme_V4_Page();
+
+        testAddCustomer();
+
+        add_customer_page.clickBtnSaveAndGoBack();
+        assertTrue(bootstrap_theme_v4_page.isThereACustomerBtn().contains("Add Customer"));
+
+        bootstrap_theme_v4_page.fillSearchName();
+        Thread.sleep(2000);
+        bootstrap_theme_v4_page.clickCheckBox();
+        bootstrap_theme_v4_page.clickDeleteBtn();
+        Thread.sleep(2000);
+        bootstrap_theme_v4_page.getAreYouSureDelete();
+    //    assertTrue(bootstrap_theme_v4_page.getAreYouSureDelete().contains("Are you sure that you want to delete this 1 item?"));
+        Thread.sleep(2000);
+        bootstrap_theme_v4_page.clickConfirmDeleteBtn();
+        Thread.sleep(2000);
+        bootstrap_theme_v4_page.clickConfirmDeleteBtn();
+        Thread.sleep(2000);
+    //    assertTrue(bootstrap_theme_v4_page.getDeleteSuccessfulMessage().contains("Your data has been successfully deleted from the database."));
     }
 
 }
