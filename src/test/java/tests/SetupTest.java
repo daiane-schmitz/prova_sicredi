@@ -1,10 +1,7 @@
 package tests;
 
 import org.junit.Test;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.Add_Customer_Page;
 import pageObjects.Bootstrap_Theme_V3_Page;
 import pageObjects.Bootstrap_Theme_V4_Page;
@@ -64,6 +61,7 @@ public class SetupTest extends BaseTests {
 
     @Test
         public void testAddCostumerAndDoSearch() throws InterruptedException {
+
         Add_Customer_Page add_customer_page = new Add_Customer_Page();
         Bootstrap_Theme_V4_Page bootstrap_theme_v4_page = new Bootstrap_Theme_V4_Page();
 
@@ -74,17 +72,23 @@ public class SetupTest extends BaseTests {
 
         bootstrap_theme_v4_page.fillSearchName();
         Thread.sleep(2000);
+        bootstrap_theme_v4_page.clickRefreshBtn();
         bootstrap_theme_v4_page.clickCheckBox();
         bootstrap_theme_v4_page.clickDeleteBtn();
         Thread.sleep(2000);
         bootstrap_theme_v4_page.getAreYouSureDelete();
-    //    assertTrue(bootstrap_theme_v4_page.getAreYouSureDelete().contains("Are you sure that you want to delete this 1 item?"));
+        assertTrue(bootstrap_theme_v4_page.getAreYouSureDelete().contains("Are you sure that you want to delete this 1 item?"));
         Thread.sleep(2000);
         bootstrap_theme_v4_page.clickConfirmDeleteBtn();
         Thread.sleep(2000);
         bootstrap_theme_v4_page.clickConfirmDeleteBtn();
-        Thread.sleep(2000);
-    //    assertTrue(bootstrap_theme_v4_page.getDeleteSuccessfulMessage().contains("Your data has been successfully deleted from the database."));
+        Thread.sleep(1000);
+
+
+//        Browser.getCurrentDriver().switchTo().alert();
+//        String alert = Browser.getCurrentDriver().switchTo().alert().getText();
+//        System.out.println(alert);
+        //assertTrue(bootstrap_theme_v4_page.getDeleteSuccessfulMessage().contains("Your data has been successfully deleted from the database."));
     }
 
 }

@@ -22,6 +22,10 @@ public class Bootstrap_Theme_V4_Page extends Bootstrap_Theme_V4_ElementMapper {
         searchName.sendKeys("Daiane");
     }
 
+    public void clickRefreshBtn(){
+        refreshBtn.click();
+    }
+
     public void clickCheckBox(){
         checkBox.click();
     }
@@ -37,7 +41,6 @@ public class Bootstrap_Theme_V4_Page extends Bootstrap_Theme_V4_ElementMapper {
     public void clickConfirmDeleteBtn(){
         confirmDeleteBtn.click();
     }
-
 
     public String getDeleteSuccessfulMessage(){
         return deleteSuccessfulMessage.getText();
