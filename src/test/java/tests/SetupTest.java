@@ -72,7 +72,7 @@ public class SetupTest extends BaseTests {
 
         bootstrap_theme_v4_page.fillSearchName();
         Thread.sleep(2000);
-        bootstrap_theme_v4_page.clickRefreshBtn();
+        bootstrap_theme_v4_page.clickRefreshBtn();  //precisei adicionar esse item para que a confirmação do delete funcionasse
         bootstrap_theme_v4_page.clickCheckBox();
         bootstrap_theme_v4_page.clickDeleteBtn();
         Thread.sleep(2000);
@@ -83,12 +83,14 @@ public class SetupTest extends BaseTests {
         Thread.sleep(2000);
         bootstrap_theme_v4_page.clickConfirmDeleteBtn();
         Thread.sleep(1000);
+            
+            //Para o assert final tentei ambas formas e não consegui
+ //assertTrue(bootstrap_theme_v4_page.getDeleteSuccessfulMessage().contains("Your data has been successfully deleted from the database."));
 
 
 //        Browser.getCurrentDriver().switchTo().alert();
 //        String alert = Browser.getCurrentDriver().switchTo().alert().getText();
 //        System.out.println(alert);
-        //assertTrue(bootstrap_theme_v4_page.getDeleteSuccessfulMessage().contains("Your data has been successfully deleted from the database."));
-    }
+           }
 
 }
