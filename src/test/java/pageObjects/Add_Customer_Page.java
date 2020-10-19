@@ -13,7 +13,7 @@ public class Add_Customer_Page extends Add_Customer_ElementMapper {
     }
 
     public void fillName(){
-        name.sendKeys("Daiane");
+        name.sendKeys("Teste Sicredi");
     }
 
     public void fillLastName(){
