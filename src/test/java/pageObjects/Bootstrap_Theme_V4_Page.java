@@ -19,7 +19,7 @@ public class Bootstrap_Theme_V4_Page extends Bootstrap_Theme_V4_ElementMapper {
     }
 
     public void fillSearchName(){
-        searchName.sendKeys("Daiane");
+        searchName.sendKeys("Teste Sicredi");
     }
 
     public void clickRefreshBtn(){
